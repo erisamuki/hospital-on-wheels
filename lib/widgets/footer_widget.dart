@@ -27,7 +27,16 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.primaryDark,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: const AssetImage('lib/assets/dr DON-11.JPG'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            AppColors.primaryDark.withValues(alpha: 0.88),
+            BlendMode.srcOver,
+          ),
+        ),
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 36),
       child: Center(
         child: ConstrainedBox(
@@ -35,7 +44,7 @@ class FooterWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Hospital on Wheels', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 21)),
+              const Text('Hospital Imaging on Wheels', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 21)),
               const SizedBox(height: 14),
               const Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +100,7 @@ class FooterWidget extends StatelessWidget {
                 ],
               ),
               const Divider(color: Colors.white24, height: 36),
-              const Text('© 2026 Hospital on Wheels', style: TextStyle(color: Colors.white54, fontSize: 13)),
+              const Text('© 2026 Hospital Imaging on Wheels', style: TextStyle(color: Colors.white54, fontSize: 13)),
             ],
           ),
         ),

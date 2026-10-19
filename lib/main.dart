@@ -13,7 +13,7 @@ class HospitalOnWheelsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hospital on Wheels',
+      title: 'Hospital Imaging on Wheels',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       initialRoute: '/',

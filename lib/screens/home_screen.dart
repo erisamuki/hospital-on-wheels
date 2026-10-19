@@ -61,29 +61,23 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildHeroSection(BuildContext context) {
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 1240),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 52),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final isWide = constraints.maxWidth >= 760;
-              final copy = _heroCopy(context);
-              final image = _heroImage();
-              return isWide
-                  ? Row(
-                      children: [
-                        Expanded(child: copy),
-                        const SizedBox(width: 54),
-                        Expanded(child: image),
-                      ],
-                    )
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [copy, const SizedBox(height: 34), image],
-                    );
-            },
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: const AssetImage('lib/assets/dr DON-11.JPG'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            Colors.white.withValues(alpha: 0.42),
+            BlendMode.srcOver,
+          ),
+        ),
+      ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1240),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 52),
+            child: _heroCopy(context),
           ),
         ),
       ),
@@ -95,18 +89,28 @@ class _HomeScreenState extends State<HomeScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'HOSPITAL ON WHEELS  /  MUKONO',
-          style: TextStyle(color: AppColors.primary, fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1),
+          'HOSPITAL IMAGING ON WHEELS  /  MUKONO',
+          style: TextStyle(
+            color: AppColors.primaryDark,
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1,
+          ),
         ).animate().fadeIn(duration: 500.ms).slideX(begin: -0.12, end: 0, curve: Curves.easeOutCubic),
         const SizedBox(height: 18),
         Text(
           'Access care with complete confidence.',
-          style: Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: 48, height: 1.12, fontWeight: FontWeight.w800),
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+            color: AppColors.primaryDark,
+            fontSize: 48,
+            height: 1.12,
+            fontWeight: FontWeight.normal,
+          ),
         ).animate(delay: 120.ms).fadeIn(duration: 700.ms).slideY(begin: 0.18, end: 0, curve: Curves.easeOutCubic).scaleXY(begin: 0.96, end: 1),
         const SizedBox(height: 20),
         const Text(
           'Quality healthcare, close to home. Visit us in Mukono, opposite the Lands Office, and let our team help you take the next step.',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 17, height: 1.7),
+          style: TextStyle(color: Color(0xFF334155), fontSize: 17, height: 1.7),
         ).animate(delay: 280.ms).fadeIn(duration: 700.ms).slideX(begin: 0.08, end: 0, curve: Curves.easeOutCubic),
         const SizedBox(height: 30),
         Wrap(
@@ -137,56 +141,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
-  }
-
-  Widget _heroImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(6),
-      child: SizedBox(
-        height: 410,
-        width: double.infinity,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'lib/assets/IMG_8714.jpg',
-              fit: BoxFit.cover,
-              cacheWidth: 1600,
-            ),
-            const DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Color(0x55064F91)],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 18,
-              right: 18,
-              bottom: 18,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
-                color: AppColors.primaryDark.withValues(alpha: 0.94),
-                child: const Row(
-                  children: [
-                    Icon(Icons.place_outlined, color: Colors.white, size: 21),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'Mukono, opposite the Lands Office',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    ).animate(delay: 180.ms).fadeIn(duration: 850.ms).scaleXY(begin: 0.93, end: 1, curve: Curves.easeOutCubic);
   }
 
   Widget _buildCareSection(BuildContext context) {
@@ -304,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ScrollReveal(
                     id: 'visit-description',
                     delay: const Duration(milliseconds: 160),
-                    child: const Text('Hospital on Wheels is in Mukono, opposite the Lands Office.', style: TextStyle(color: AppColors.textSecondary, fontSize: 16, height: 1.6)),
+                    child: const Text('Hospital Imaging on Wheels is in Mukono, opposite the Lands Office.', style: TextStyle(color: AppColors.textSecondary, fontSize: 16, height: 1.6)),
                   ),
                   const SizedBox(height: 22),
                   OutlinedButton.icon(
@@ -322,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Icon(Icons.pin_drop_outlined, color: AppColors.lightAccent, size: 30),
                     SizedBox(height: 18),
-                    Text('HOSPITAL ON WHEELS', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
+                    Text('HOSPITAL IMAGING ON WHEELS', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
                     SizedBox(height: 8),
                     Text('Mukono\nOpposite the Lands Office', style: TextStyle(color: Colors.white70, height: 1.6)),
                   ],
@@ -342,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Visit Hospital on Wheels'),
+        title: const Text('Visit Hospital Imaging on Wheels'),
         content: const Text('Mukono, opposite the Lands Office.'),
         actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
       ),

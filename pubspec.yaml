@@ -68,6 +68,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - lib/assets/dr DON-11.JPG
     - lib/assets/IMG_8714.jpg
     - lib/assets/IMG_8697.jpg
     - lib/assets/IMG_8715.jpg

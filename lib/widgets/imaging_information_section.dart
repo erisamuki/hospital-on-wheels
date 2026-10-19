@@ -31,11 +31,22 @@ class ImagingInformationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: const AssetImage('lib/assets/dr DON-11.JPG'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            Colors.white.withValues(alpha: 0.42),
+            BlendMode.srcOver,
+          ),
+        ),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [AppColors.sectionBackground, AppColors.background],
+          colors: [
+            AppColors.sectionBackground.withValues(alpha: 0.3),
+            AppColors.background.withValues(alpha: 0.3),
+          ],
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),

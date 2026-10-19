@@ -16,7 +16,7 @@ void main() {
     await tester.pumpWidget(const HospitalOnWheelsApp());
     await tester.pumpAndSettle();
 
-    expect(find.text('Hospital on Wheels'), findsWidgets);
+    expect(find.text('Hospital Imaging on Wheels'), findsWidgets);
     expect(find.text('Access care with complete confidence.'), findsOneWidget);
     expect(find.textContaining('Lands Office'), findsWidgets);
   });

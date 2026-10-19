@@ -1,6 +1,6 @@
-# Hospital on Wheels
+# Hospital Imaging on Wheels
 
-Hospital on Wheels is a Flutter application for a healthcare provider in Mukono, Uganda. It introduces the hospital and its services, provides location information, and lets visitors submit an appointment request form.
+Hospital Imaging on Wheels is a Flutter application for a healthcare provider in Mukono, Uganda. It introduces the hospital and its services, provides location information, and lets visitors submit an appointment request form.
 
 ## Features
 
