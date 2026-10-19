@@ -66,20 +66,46 @@ class _HomeScreenState extends State<HomeScreen> {
         image: DecorationImage(
           image: const AssetImage('lib/assets/dr DON-11.JPG'),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            Colors.white.withValues(alpha: 0.42),
-            BlendMode.srcOver,
-          ),
+          alignment: Alignment.centerRight,
         ),
       ),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1240),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 52),
-            child: _heroCopy(context),
+      child: Stack(
+        children: [
+          const Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xEB0B3C6F),
+                    Color(0xB30B3C6F),
+                    Color(0x000B3C6F),
+                  ],
+                  stops: [0, 0.45, 1],
+                ),
+              ),
+            ),
           ),
-        ),
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1240),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 52,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 680),
+                    child: _heroCopy(context),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -88,30 +114,65 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'HOSPITAL IMAGING ON WHEELS  /  MUKONO',
-          style: TextStyle(
-            color: AppColors.primaryDark,
-            fontSize: 12,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1,
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: const Color(0xFFC45A00),
+            borderRadius: BorderRadius.circular(4),
           ),
-        ).animate().fadeIn(duration: 500.ms).slideX(begin: -0.12, end: 0, curve: Curves.easeOutCubic),
+          child: const Text(
+            'HOSPITAL IMAGING ON WHEELS  /  MUKONO',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1,
+            ),
+          ),
+        )
+            .animate()
+            .fadeIn(duration: 500.ms, curve: Curves.easeOut)
+            .move(
+              begin: const Offset(0, 20),
+              end: Offset.zero,
+              duration: 500.ms,
+              curve: Curves.easeOutCubic,
+            ),
         const SizedBox(height: 18),
         Text(
           'Access care with complete confidence.',
           style: Theme.of(context).textTheme.displayMedium?.copyWith(
-            color: AppColors.primaryDark,
-            fontSize: 48,
+            color: Colors.white,
+            fontSize: 56,
             height: 1.12,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w800,
           ),
-        ).animate(delay: 120.ms).fadeIn(duration: 700.ms).slideY(begin: 0.18, end: 0, curve: Curves.easeOutCubic).scaleXY(begin: 0.96, end: 1),
+        )
+            .animate(delay: 150.ms)
+            .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+            .move(
+              begin: const Offset(0, 20),
+              end: Offset.zero,
+              duration: 600.ms,
+              curve: Curves.easeOutCubic,
+            ),
         const SizedBox(height: 20),
         const Text(
-          'Quality healthcare, close to home. Visit us in Mukono, opposite the Lands Office, and let our team help you take the next step.',
-          style: TextStyle(color: Color(0xFF334155), fontSize: 17, height: 1.7),
-        ).animate(delay: 280.ms).fadeIn(duration: 700.ms).slideX(begin: 0.08, end: 0, curve: Curves.easeOutCubic),
+          'Quality healthcare close to home. Visit us in Mukono, opposite the Lands Office.',
+          style: TextStyle(
+            color: Color(0xE6FFFFFF),
+            fontSize: 20,
+            height: 1.7,
+          ),
+        )
+            .animate(delay: 300.ms)
+            .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+            .move(
+              begin: const Offset(0, 20),
+              end: Offset.zero,
+              duration: 600.ms,
+              curve: Curves.easeOutCubic,
+            ),
         const SizedBox(height: 30),
         Wrap(
           spacing: 10,
@@ -121,7 +182,15 @@ class _HomeScreenState extends State<HomeScreen> {
             _HeroBadge(icon: Icons.directions_bus_outlined, label: 'Mobile imaging'),
             _HeroBadge(icon: Icons.location_on_outlined, label: 'Mukono, Uganda'),
           ],
-        ),
+        )
+            .animate(delay: 450.ms)
+            .fadeIn(duration: 500.ms)
+            .move(
+              begin: const Offset(0, 20),
+              end: Offset.zero,
+              duration: 500.ms,
+              curve: Curves.easeOutCubic,
+            ),
         const SizedBox(height: 24),
         Wrap(
           spacing: 12,
@@ -131,12 +200,32 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () => Navigator.pushNamed(context, '/appointment'),
               icon: const Icon(Icons.calendar_month_outlined),
               label: const Text('Book an appointment'),
-            ).animate(delay: 450.ms).fadeIn().slideY(begin: 0.15, end: 0),
-            OutlinedButton.icon(
+            )
+                .animate(delay: 600.ms)
+                .fadeIn(duration: 500.ms)
+                .move(
+                  begin: const Offset(0, 20),
+                  end: Offset.zero,
+                  duration: 500.ms,
+                  curve: Curves.easeOutCubic,
+                ),
+            ElevatedButton.icon(
               onPressed: () => _showLocation(context),
               icon: const Icon(Icons.location_on_outlined),
               label: const Text('Find our hospital'),
-            ).animate(delay: 560.ms).fadeIn().slideY(begin: 0.15, end: 0),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
+                foregroundColor: Colors.white,
+              ),
+            )
+                .animate(delay: 700.ms)
+                .fadeIn(duration: 500.ms)
+                .move(
+                  begin: const Offset(0, 20),
+                  end: Offset.zero,
+                  duration: 500.ms,
+                  curve: Curves.easeOutCubic,
+                ),
           ],
         ),
       ],
